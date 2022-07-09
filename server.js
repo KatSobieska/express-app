@@ -16,6 +16,7 @@ app.engine(
   "hbs",
   hbs({ extname: "hbs", layoutsDir: "./layouts", defaultLayout: "main" })
 );
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -35,6 +36,10 @@ app.get("/contact", (req, res) => {
 
 app.get("/hello/:name", (req, res) => {
   res.render("hello", { name: req.params.name });
+});
+
+app.post("/contact/send-message", (req, res) => {
+  res.json(req.body);
 });
 
 app.use((req, res) => {
