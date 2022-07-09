@@ -4,15 +4,8 @@ const hbs = require("express-handlebars");
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.show = (name) => {
-    res.sendFile(path.join(__dirname, `/views/${name}`));
-  };
-  next();
-});
-
 app.use("/user", (req, res) => {
-  res.show("forbidden.html");
+  res.render("forbidden");
 });
 
 app.use(express.static(path.join(__dirname, "/public")));
@@ -21,15 +14,15 @@ app.engine(".hbs", hbs());
 app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => {
-  res.show("home.html");
+  res.render("home", { layout: false });
 });
 
 app.get("/home", (req, res) => {
-  res.show("home.html");
+  res.render("home", { layout: false });
 });
 
 app.get("/about", (req, res) => {
-  res.show("about.html");
+  res.render("about", { layout: false });
 });
 
 app.get("/hello/:name", (req, res) => {
