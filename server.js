@@ -10,7 +10,6 @@ app.use("/user", (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, "/public")));
-app.use("/images/uploads", express.static("images/uploads"));
 
 app.engine(".hbs", hbs());
 app.set("view engine", ".hbs");
