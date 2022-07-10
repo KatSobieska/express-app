@@ -62,7 +62,7 @@ app.post("/contact/send-message", upload.single("image"), (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).show("404.html");
+  res.status(404).render("404");
 });
 
 app.listen(8000, () => {
